@@ -47,7 +47,7 @@ class HttpResponse
 
 	/**
 	 * __construct
-	 * @return mixed 
+	 * @return mixed
 	 */
 	public function __construct($handler, $response)
 	{
@@ -58,7 +58,7 @@ class HttpResponse
 
 	/**
 	 * 获取http状态码
-	 * @return int 
+	 * @return int
 	 */
 	public function httpCode()
 	{
@@ -67,7 +67,7 @@ class HttpResponse
 
 	/**
 	 * 处理
-	 * @return mixed 
+	 * @return mixed
 	 */
 	protected function parseResponse()
 	{
@@ -94,7 +94,7 @@ class HttpResponse
 
 	/**
 	 * parseHeaderOneRequest
-	 * @param string $piece 
+	 * @param string $piece
 	 * @return array
 	 */
 	protected function parseHeaderOneRequest($piece){
@@ -148,4 +148,10 @@ class HttpResponse
 			}
 		}
 	}
+	
+    public function getLastEffectiveUrl()
+    {
+        $url = curl_getinfo($this->handler, CURLINFO_EFFECTIVE_URL);
+        return $url;
+    }
 }
