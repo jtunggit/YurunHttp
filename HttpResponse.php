@@ -104,7 +104,7 @@ class HttpResponse
 		//从1开始，第0行包含了协议信息和状态信息，排除该行
 		for($i=1; $i<$linesCount; ++$i){
 			$line = trim($lines[$i]);
-			if(empty($line)) continue;
+			if(empty($line)||strstr($line, ':') == false) continue;
 			list($key, $value) = explode(':', $line, 2);
 			$key = trim($key);
 			$value = trim($value);
@@ -148,10 +148,13 @@ class HttpResponse
 			}
 		}
 	}
+<<<<<<< HEAD
 	
     public function getLastEffectiveUrl()
     {
         $url = curl_getinfo($this->handler, CURLINFO_EFFECTIVE_URL);
         return $url;
     }
+=======
+>>>>>>> 73674fec1e4fb599364ee0ea830e417b1784c88b
 }
